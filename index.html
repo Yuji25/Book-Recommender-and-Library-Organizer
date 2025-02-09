@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveller</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./modal.css">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <base href="https://yuji25.github.io/Book-Recommender-and-Library-Organizer/">
+</head>
+
+<body>
+    <div class="header-wrapper">
+        <div class="title-container">
+            <img src="./assets/loadIcon.gif" alt="Traveller Icon" class="title-icon">
+            <h1 class="title">TRAVELLER</h1>
+            <button class="note-btn">❤️</button>
+            <div class="note-tooltip">Welcome Back Reader!</div>
+        </div>
+    </div>
+    <div class="container">
+        <header class="navbar">
+            <div class="nav-options">
+                <div class="nav-item search-option active" data-target="search">
+                    <span>Search</span>
+                </div>
+                <div class="nav-item recommendations-option" data-target="recommendations">
+                    <span>Recommendations</span>
+                </div>
+                <div class="nav-item library-option" data-target="library">
+                    <span>Library</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <!-- Search Section -->
+            <section id="search" class="active-section">
+                <div class="search-container">
+                    <input type="text" id="book-search" placeholder="Enter book name...">
+                    <button class="search-btn">Search</button>
+                </div>
+            </section>
+
+            <!-- Recommendations Section -->
+            <section id="recommendations" class="section">
+                <div class="genre-selection">
+                    <h2 class="genre-select">Select Genres</h2>
+                    <div class="genre-grid">
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="fantasy">
+                            <span>Fantasy</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="mystery">
+                            <span>Mystery</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="romance">
+                            <span>Romance</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="thriller">
+                            <span>Thriller</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="historical-fiction">
+                            <span>Historical Fiction</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="science-fiction">
+                            <span>Science Fiction</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="horror">
+                            <span>Horror</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="biography">
+                            <span>Biography</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="contemporary">
+                            <span>Contemporary</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="classics">
+                            <span>Classics</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="young-adult">
+                            <span>Young Adult</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="non-fiction">
+                            <span>Non-Fiction</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="adventure">
+                            <span>Adventure</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="crime">
+                            <span>Crime</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="literary-fiction">
+                            <span>Literary Fiction</span>
+                        </label>
+                        <label class="genre-checkbox">
+                            <input type="checkbox" name="genre" value="manga">
+                            <span>Manga</span>
+                        </label>
+                    </div>
+                    <button class="get-books-btn">Get Books</button>
+                </div>
+            </section>
+
+            <!-- Results Container-->
+            <div class="results-container">
+                <div class="books-grid">
+                </div>
+            </div>
+
+            <!-- Library Section -->
+            <section id="library" class="section">
+                <div class="library-tabs">
+                    <div class="tab active" data-lib-tab="reading">Reading</div>
+                    <div class="tab" data-lib-tab="completed">Completed</div>
+                    <div class="tab" data-lib-tab="favorites">Favorites</div>
+                    <div class="tab" data-lib-tab="planToRead">Plan to Read</div>
+                    <div class="tab" data-lib-tab="onHold">On Hold</div>
+                </div>
+                <div class="library-content">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="book-modal" class="modal">
+        <div class="modal-container">
+            <span class="close-modal">&times;</span>
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Changes Modal -->
+    <div id="track-modal" class="modal">
+        <div class="modal-container">
+            <span class="close-modal">&times;</span>
+            <div class="track-form">
+                <!-- Add book title here -->
+                <h2 class="track-book-title"></h2>
+                <div class="form-group">
+                    <label>Status:</label>
+                    <select id="book-status">
+                        <option value="reading">Reading</option>
+                        <option value="completed">Completed</option>
+                        <option value="favorites">Favorites</option>
+                        <option value="planToRead">Plan to Read</option>
+                        <option value="onHold">On Hold</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Pages Read:</label>
+                    <input type="number" id="pages-read" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Start Date:</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div class="form-group">
+                    <label>End Date:</label>
+                    <input type="date" id="end-date">
+                </div>
+                <div class="form-group">
+                    <label>Rating:</label>
+                    <input type="number" id="rating" min="0" max="10" step="0.5">
+                </div>
+                <div class="modal-button-group">
+                    <button class="save-changes-btn">Save Changes</button>
+                    <button class="remove-btn">Remove</button>
+                </div>
+                <button class="info-btn">Info</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Info Modal -->
+    <div id="book-info-modal" class="modal">
+        <div class="modal-container">
+            <span class="close-modal">&times;</span>
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

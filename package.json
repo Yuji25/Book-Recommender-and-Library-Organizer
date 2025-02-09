@@ -1,0 +1,31 @@
+{
+  "name": "traveller",
+  "version": "1.0.0",
+  "description": "A modern web application for book enthusiasts to discover, track, and organize their reading journey. Built with vanilla JavaScript, this application offers a sleek interface to search books, get recommendations, and manage your personal library.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d .",
+    "predeploy": "echo 'Starting deployment...'",
+    "postdeploy": "echo 'Deployment complete.'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuji25/Book-Recommender-and-Library-Organizer.git"
+  },
+  "keywords": [
+    "books",
+    "library",
+    "tracking",
+    "recommendations"
+  ],
+  "author": "Lavanya Soni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yuji25/Book-Recommender-and-Library-Organizer/issues"
+  },
+  "homepage": "https://yuji25.github.io/Book-Recommender-and-Library-Organizer",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

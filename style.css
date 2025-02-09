@@ -21,7 +21,6 @@ body {
     background-clip: padding-box;
 }
 
-/* Enhanced border glow effect */
 body::before {
     content: '';
     position: fixed;
@@ -67,7 +66,6 @@ body::before {
     margin: 0 auto;
 }
 
-/* Navbar Styling */
 .navbar {
     background-color: var(--dark-purple);
     border-radius: 10px;
@@ -129,9 +127,9 @@ body::before {
     0 0 30px rgba(0, 102, 255, 0.1);
 }
 
-/* Note button styles */
+
 .note-btn {
-    margin-left: auto; /* Push to the right */
+    margin-left: auto; 
     padding: 8px 20px;
     font-size: 1rem;
     font-weight: bold;
@@ -255,7 +253,7 @@ body::before {
     color: var(--primary-purple);
 }
 
-/* Track Changes Modal */
+
 .track-form {
     position: relative;
     padding-top: 40px;
@@ -341,7 +339,7 @@ body::before {
     background-color: #302626;
 }
 
-/* Results Container */
+
 .results-container {
     background-color: var(--white);
     border-radius: 10px;
@@ -350,7 +348,7 @@ body::before {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Search Section */
+
 .search-container {
     display: flex;
     justify-content: center;
@@ -393,7 +391,7 @@ body::before {
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Genre Selection */
+
 .genre-selection {
     text-align: center;
     margin: 20px 0;
@@ -446,7 +444,7 @@ body::before {
     border-color: var(--primary-purple);
 }
 
-/* Add the border effect when checked */
+
 .genre-checkbox input:checked {
     border-color: var(--primary-purple);
 }
@@ -455,7 +453,7 @@ body::before {
     border: 2px solid var(--primary-purple);
 }
 
-/* Results Container */
+
 .results-container {
     margin-top: 30px;
     min-height: 300px;
@@ -471,7 +469,7 @@ body::before {
     gap: 20px;
 }
 
-/* Utility Classes */
+
 .hidden {
     display: none;
 }
@@ -480,7 +478,7 @@ body::before {
     display: block;
 }
 
-/* Track Button and Options */
+
 .track-button-container {
     position: relative;
     margin-top: 20px;
@@ -531,7 +529,7 @@ body::before {
     color: white;
 }
 
-/* Notification */
+
 .notification {
     position: fixed;
     bottom: 20px;

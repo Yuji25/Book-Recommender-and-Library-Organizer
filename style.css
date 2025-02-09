@@ -1,0 +1,556 @@
+:root {
+    --primary-purple: #6a0dad;
+    --light-purple: #9932cc;
+    --dark-purple: #4B0082;
+    --background-gray: #000000;
+    --white: #ffffff;
+    --text-color: #333;
+    --border-glow-color1: #0066ff;
+    --border-glow-color2: #00ffff;
+}
+
+body {
+    background-color: var(--background-gray);
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    margin: 20px;
+    padding: 0;
+    position: relative;
+    min-height: 97vh;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Enhanced border glow effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 3px solid transparent;
+    background: linear-gradient(45deg, var(--border-glow-color1), var(--border-glow-color2)) border-box;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) padding-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: borderGlow 2s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes borderGlow {
+    0% {
+        filter: 
+            drop-shadow(0 0 5px rgba(0, 102, 255, 0.8))
+            drop-shadow(0 0 10px rgba(0, 102, 255, 0.6))
+            drop-shadow(0 0 15px rgba(0, 102, 255, 0.4))
+            drop-shadow(0 0 20px rgba(0, 102, 255, 0.2));
+    }
+    100% {
+        filter: 
+            drop-shadow(0 0 8px rgba(0, 255, 255, 0.8))
+            drop-shadow(0 0 16px rgba(0, 255, 255, 0.6))
+            drop-shadow(0 0 24px rgba(0, 255, 255, 0.4))
+            drop-shadow(0 0 32px rgba(0, 255, 255, 0.2));
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--dark-purple);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.nav-item {
+    color: var(--white);
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--light-purple);
+}
+
+.header-wrapper {
+    width: 100%;
+    background: transparent;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.title-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #0066ff, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+    text-shadow: 
+    0 0 10px rgba(0, 102, 255, 0.3),
+    0 0 20px rgba(0, 102, 255, 0.2),
+    0 0 30px rgba(0, 102, 255, 0.1);
+}
+
+/* Note button styles */
+.note-btn {
+    margin-left: auto; /* Push to the right */
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    background-clip: padding-box;
+    transition: all 0.3s ease;
+}
+
+.note-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #0066ff, #00ffff);
+    animation: glowBorder 2s ease-in-out infinite alternate;
+}
+
+.note-tooltip {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    max-width: 200px;
+    text-align: center;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.note-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    z-index: -1;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #0066ff, #00ffff);
+}
+
+.note-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+
+.note-btn:hover + .note-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 2px rgba(0, 102, 255, 0.6))
+               drop-shadow(0 0 4px rgba(0, 102, 255, 0.4));
+    }
+    to {
+        filter: drop-shadow(0 0 4px rgba(0, 102, 255, 0.8))
+        drop-shadow(0 0 6px rgba(0, 102, 255, 0.6));
+    }
+}
+
+@keyframes glowBorder {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Library Tabs */
+.library-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background-color: var(--light-purple);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.library-tabs .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--white);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.library-tabs .tab:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.library-tabs .tab.active {
+    background-color: var(--white);
+    color: var(--primary-purple);
+}
+
+/* Track Changes Modal */
+.track-form {
+    position: relative;
+    padding-top: 40px;
+}
+
+.track-book-title {
+    color: var(--primary-purple);
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+    max-width: 80%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--primary-purple);
+}
+
+.form-group input,
+.form-group select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.modal-button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.save-changes-btn {
+    flex: 1;
+    margin-right: 5px;
+    background-color: #15b328;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.save-changes-btn:hover{
+    background-color: #077314;
+}
+
+.remove-btn {
+    flex: 1;
+    margin-left: 5px;
+    background-color: #ff4444;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
+
+.info-btn {
+    position: absolute;
+    color: white;
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    background-color: rgb(0, 0, 0);
+}
+
+.info-btn:hover{
+    background-color: #302626;
+}
+
+/* Results Container */
+.results-container {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Search Section */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#book-search {
+    width: 60%;
+    padding: 12px 20px;
+    border: 2px solid var(--primary-purple);
+    border-radius: 25px;
+    font-size: 16px;
+    margin-right: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#book-search:focus {
+    box-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+    border-color: var(--light-purple);
+}
+
+.search-btn, .get-books-btn {
+    padding: 12px 25px;
+    background-color: var(--primary-purple);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-btn:hover, .get-books-btn:hover {
+    background-color: var(--light-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Genre Selection */
+.genre-selection {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.genre-select{
+    color:white;
+}
+
+.genre-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0px 15px 0px;
+}
+
+.genre-checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 5px solid transparent;
+    min-width: 80px;
+}
+
+.genre-checkbox:hover {
+    border-color: var(--light-purple);
+}
+
+.genre-checkbox input {
+    display: none;
+}
+
+.genre-checkbox span {
+    transition: color 0.2s ease-out;
+}
+
+.genre-checkbox input:checked + span {
+    color: var(--primary-purple);
+    font-weight: bolder;
+}
+
+.genre-checkbox input:checked ~ .genre-checkbox {
+    border-color: var(--primary-purple);
+}
+
+/* Add the border effect when checked */
+.genre-checkbox input:checked {
+    border-color: var(--primary-purple);
+}
+
+.genre-checkbox input:checked + .genre-checkbox {
+    border: 2px solid var(--primary-purple);
+}
+
+/* Results Container */
+.results-container {
+    margin-top: 30px;
+    min-height: 300px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+.active-section {
+    display: block;
+}
+
+/* Track Button and Options */
+.track-button-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+.track-btn {
+    background-color: var(--primary-purple);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.track-btn:hover {
+    background-color: var(--light-purple);
+}
+
+.track-options {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 5px;
+}
+
+.track-options.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.track-options button {
+    padding: 8px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.track-options button:hover {
+    background-color: var(--light-purple);
+    color: white;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-purple);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

@@ -31,7 +31,7 @@ A modern web application for book enthusiasts to discover, track, and organize t
 - **Real-time Updates**: Instant feedback for all user interactions
 
 ## 🚀 Live Demo
-[View Live Demo](https://www.google.com/) <!-- Add your deployed site link here -->
+[View Live Demo](https://yuji25.github.io/Book-Recommender-and-Library-Organizer) <!-- Add your deployed site link here -->
 
 ## 🛠️ Built With
 - HTML5
